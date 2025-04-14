@@ -5,10 +5,9 @@
 
 class camera {
   public:
-    /* TODO - Public Camera Parameters Here */
     // Image
-    double aspect_ratio = 16.0 / 9.0;
-    int image_width = 400;
+    double aspect_ratio = 1.0;
+    int image_width = 100;
 
     void render (const hittable& world) {
       initialize();
@@ -31,7 +30,6 @@ class camera {
       
     }
   private:
-    /* TODO - Private Camera Variables Here */
     int image_height;   // Rendered image height
     point3 center;      // Camera center
     point3 pixel00_loc; // Location of pixel 0,0
@@ -40,7 +38,7 @@ class camera {
 
     void initialize() {
       // image_height set based on aspect ratio
-      int image_height = static_cast<int>(image_width / aspect_ratio);
+      image_height = int(image_width / aspect_ratio);
       // image height cannot be less than 1
       image_height = (image_height < 1) ? 1: image_height;
 
@@ -49,7 +47,7 @@ class camera {
       // Calculate viewport dimensions
       auto focal_length = 1.0;
       auto viewport_height = 2.0;
-      auto viewport_width = viewport_height * (static_cast<double>(image_width)/image_height);
+      auto viewport_width = viewport_height * (double(image_width)/image_height);
 
       // Calculate the vectors across the horizontal and down the vertical viewport edges.
       auto viewport_u = vec3(viewport_width, 0, 0);
