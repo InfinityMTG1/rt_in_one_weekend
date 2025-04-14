@@ -38,3 +38,7 @@ image.ppm
 build/**
 cmake-build-debug/**
 cmake-build-release/**
+
+# macOS files layout
+.DS_Store
+
